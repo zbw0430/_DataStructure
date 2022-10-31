@@ -20,8 +20,13 @@ void TestSeqList()
     
     SeqListPopBack(&sl);
     SeqListPopBack(&sl);
-    SeqListPopBack(&sl);
     SeqListPrint(&sl);
+    
+    SeqListInsert(&sl, 2, 10);
+    SeqListPrint(&sl);
+    SeqListErase(&sl, 1);
+    SeqListPrint(&sl);
+    
     SeqListDestroy(&sl);
 }
 
