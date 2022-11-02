@@ -19,5 +19,10 @@ int main()
     SListPushFront(&slt, 5);
     SListPushFront(&slt, 6);
     SListPrint(slt);
+    
+    SListPopBack(&slt);
+    SListPrint(slt);
+    SListPopFront(&slt);
+    SListPrint(slt);
     return 0;
 }

@@ -59,3 +59,34 @@ void SListPushFront(SListNode** pplist, SLTDateType x)
     newnode->next = *pplist;
     *pplist = newnode;
 }
+
+// 单链表的尾删
+void SListPopBack(SListNode** pplist)
+{
+    assert(*pplist);
+    if((*pplist)->next == NULL)
+    {
+        free(*pplist);
+        *pplist = NULL;
+    }
+    else
+    {
+        SListNode* cur = *pplist;
+        while(cur->next->next)
+        {
+            cur = cur->next;
+        }
+        free(cur->next);
+        cur->next = NULL;
+    }
+    
+}
+
+// 单链表头删
+void SListPopFront(SListNode** pplist)
+{
+    assert(*pplist);
+    SListNode* cur = *pplist;
+    *pplist = (*pplist)->next;
+    free(cur);
+}
