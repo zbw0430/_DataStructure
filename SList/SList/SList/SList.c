@@ -90,3 +90,26 @@ void SListPopFront(SListNode** pplist)
     *pplist = (*pplist)->next;
     free(cur);
 }
+
+// 单链表查找
+SListNode* SListFind(SListNode* plist, SLTDateType x)
+{
+    SListNode* cur = plist;
+    while(cur)
+    {
+        if(cur->data == x)
+            return cur;
+        cur = cur->next;
+    }
+    return NULL;
+}
+
+// 单链表在pos位置之后插入x
+// 分析思考为什么不在pos位置之前插入？
+void SListInsertAfter(SListNode* pos, SLTDateType x);
+// 单链表删除pos位置之后的值
+// 分析思考为什么不删除pos位置？
+void SListEraseAfter(SListNode* pos);
+// 单链表的销毁
+void SListDestroy(SListNode* plist);
+
