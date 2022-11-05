@@ -24,5 +24,14 @@ int main()
     SListPrint(slt);
     SListPopFront(&slt);
     SListPrint(slt);
+    
+    SListNode* cur = SListFind(slt, 4);
+    SListInsertAfter(cur, 7);
+    SListPrint(slt);
+    SListEraseAfter(cur);
+    SListPrint(slt);
+    SListDestroy(&slt);
+    SListPrint(slt);
+    
     return 0;
 }

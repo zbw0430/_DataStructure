@@ -106,10 +106,42 @@ SListNode* SListFind(SListNode* plist, SLTDateType x)
 
 // 单链表在pos位置之后插入x
 // 分析思考为什么不在pos位置之前插入？
-void SListInsertAfter(SListNode* pos, SLTDateType x);
+void SListInsertAfter(SListNode* pos, SLTDateType x)
+{
+    assert(pos);
+    SListNode* newNode = BuySListNode(x);
+    newNode->next = pos->next;
+    pos->next = newNode;
+}
+
 // 单链表删除pos位置之后的值
 // 分析思考为什么不删除pos位置？
-void SListEraseAfter(SListNode* pos);
+void SListEraseAfter(SListNode* pos)
+{
+    assert(pos);
+    if(pos->next == NULL)
+        return;
+    else
+    {
+        SListNode* del = pos->next;
+        pos->next = pos->next->next;
+        free(del);
+        del = NULL;
+    }
+    
+}
+
 // 单链表的销毁
-void SListDestroy(SListNode* plist);
+void SListDestroy(SListNode** plist)
+{
+    SListNode* cur = *plist;
+    SListNode* next = cur->next;
+    while(next)
+    {
+        free(cur);
+        cur = next;
+        next = cur->next;
+    }
+    *plist = NULL;
+}
 
