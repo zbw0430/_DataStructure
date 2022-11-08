@@ -192,9 +192,56 @@
 //
 //
 //    return false;
-//    
+//
 //}
 
+
+//力扣 138. 复制带随机指针的链表
+//struct Node* copyRandomList(struct Node* head)
+//{
+//    if(head == NULL)
+//        return NULL;
+//    struct Node* cur = head;
+//    while(cur)
+//    {
+//        struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+//        newNode->val = cur->val;
+//        newNode->next = cur->next;
+//        cur->next = newNode;
+//        cur = cur->next->next;
+//    }
+//
+//    struct Node* left = head;
+//    struct Node* right = head->next;
+//    while(left)
+//    {
+//        //struct Node* right = left->next;
+//        if(left->random == NULL)
+//            right->random = NULL;
+//        else
+//            right->random = left->random->next;
+//        left = left->next->next;
+//        if(left)
+//            right = left->next;
+//    }
+//
+//    cur = head;
+//    struct Node* newcur = head->next;
+//    struct Node* newHead = head->next;
+//    while(cur)
+//    {
+//        //struct Node* newcur = cur->next;
+//        cur->next = newcur->next;
+//        cur = cur->next;
+//        if(newcur->next)
+//            newcur->next = newcur->next->next;
+//        else
+//            newcur->next = NULL;
+//        newcur = newcur->next;
+//    }
+//
+//    return newHead;
+//}
 
 int main(int argc, const char * argv[]) {
     // insert code here...
