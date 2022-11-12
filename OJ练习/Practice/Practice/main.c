@@ -243,6 +243,32 @@
 //    return newHead;
 //}
 
+
+//力扣 20. 有效的括号
+//bool isValid(char * s)
+//{
+//    int len = strlen(s);
+//    char Stack[len];
+//    int top = 0;
+//    char num;
+//
+//    for(int i = 0; i< len; i++)
+//    {
+//        if(s[i] == '(' || s[i] == '[' || s[i] == '{') Stack[top++] = s[i];
+//        else
+//        {
+//            if(top == 0) return false;
+//            num = Stack[--top];
+//            if(s[i] == ')' && num != '(') return false;
+//            if(s[i] == ']' && num != '[') return false;
+//            if(s[i] == '}' && num != '{') return false;
+//        }
+//    }
+//
+//    if(top != 0) return false;
+//    return true;
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
