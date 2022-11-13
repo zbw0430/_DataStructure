@@ -36,3 +36,4 @@ int StackSize(Stack* ps);
 int StackEmpty(Stack* ps);
 // 销毁栈
 void StackDestroy(Stack* ps);
+
