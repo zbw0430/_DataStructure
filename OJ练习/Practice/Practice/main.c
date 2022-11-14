@@ -269,6 +269,384 @@
 //    return true;
 //}
 
+
+//力扣 225. 用队列实现栈
+//#define QDataType int
+//typedef struct QListNode
+//{
+//    struct QListNode* _next;
+//    QDataType _data;
+//}QNode;
+//
+//// 队列的结构
+//typedef struct Queue
+//{
+//    QNode* _front;
+//    QNode* _rear;
+//    int size;
+//}Queue;
+//
+//// 初始化队列
+//void QueueInit(Queue* q);
+//// 队尾入队列
+//void QueuePush(Queue* q, QDataType data);
+//// 队头出队列
+//void QueuePop(Queue* q);
+//// 获取队列头部元素
+//QDataType QueueFront(Queue* q);
+//// 获取队列队尾元素
+//QDataType QueueBack(Queue* q);
+//// 获取队列中有效元素个数
+//int QueueSize(Queue* q);
+//// 检测队列是否为空，如果为空返回非零结果，如果非空返回0
+//int QueueEmpty(Queue* q);
+//// 销毁队列
+//void QueueDestroy(Queue* q);
+//
+//
+//// 初始化队列
+//void QueueInit(Queue* q)
+//{
+//    assert(q);
+//    q->_front = NULL;
+//    q->_rear = NULL;
+//    q->size = 0;
+//}
+//
+//// 队尾入队列
+//void QueuePush(Queue* q, QDataType data)
+//{
+//    assert(q);
+//
+//    QNode* newNode = (QNode*)malloc(sizeof(QNode));
+//    if(newNode == NULL)
+//    {
+//        perror("malloc failed");
+//        exit(-1);
+//    }
+//    newNode->_data = data;
+//    newNode->_next = NULL;
+//
+//    if(q->_front == NULL)
+//    {
+//        q->_front = newNode;
+//        q->_rear = newNode;
+//        q->size++;
+//    }
+//    else
+//    {
+//        q->_rear->_next = newNode;
+//        q->_rear = newNode;
+//        q->size++;
+//    }
+//}
+//
+//// 队头出队列
+//void QueuePop(Queue* q)
+//{
+//    assert(q);
+//    assert(!QueueEmpty(q));
+//
+//    QNode* del = q->_front;
+//    q->_front = q->_front->_next;
+//    free(del);
+//
+//    if(q->_front == NULL)
+//    {
+//        q->_rear = NULL;
+//    }
+//
+//    q->size--;
+//}
+//
+//// 获取队列头部元素
+//QDataType QueueFront(Queue* q)
+//{
+//    assert(q);
+//    assert(!QueueEmpty(q));
+//
+//    return q->_front->_data;
+//}
+//
+//// 获取队列队尾元素
+//QDataType QueueBack(Queue* q)
+//{
+//    assert(q);
+//    assert(!QueueEmpty(q));
+//
+//    return q->_rear->_data;
+//}
+//
+//// 获取队列中有效元素个数
+//int QueueSize(Queue* q)
+//{
+//    assert(q);
+//    return q->size;
+//}
+//
+//// 检测队列是否为空，如果为空返回非零结果，如果非空返回0
+//int QueueEmpty(Queue* q)
+//{
+//    assert(q);
+//
+//    return q->_front == NULL && q->_rear == NULL;
+//}
+//
+//// 销毁队列
+//void QueueDestroy(Queue* q)
+//{
+//    assert(q);
+//    QNode* cur = q->_front;
+//    while(cur)
+//    {
+//        QNode* del = cur;
+//        cur = cur->_next;
+//        free(del);
+//    }
+//    q->_front = q->_rear = NULL;
+//    q->size = 0;
+//}
+//
+//
+//
+//typedef struct
+//{
+//    Queue q1;
+//    Queue q2;
+//} MyStack;
+//
+//
+//MyStack* myStackCreate()
+//{
+//    MyStack* obj = (MyStack*)malloc(sizeof(MyStack));
+//    QueueInit(&obj->q1);
+//    QueueInit(&obj->q2);
+//
+//    return obj;
+//}
+//
+//void myStackPush(MyStack* obj, int x)
+//{
+//    if(!QueueEmpty(&obj->q1))
+//    {
+//        QueuePush(&obj->q1, x);
+//    }
+//    else
+//    {
+//        QueuePush(&obj->q2, x);
+//    }
+//}
+//
+//int myStackTop(MyStack* obj)
+//{
+//    if(!QueueEmpty(&obj->q1))
+//    {
+//        return QueueBack(&obj->q1);
+//    }
+//    else
+//    {
+//        return QueueBack(&obj->q2);
+//
+//    }
+//}
+//
+//int myStackPop(MyStack* obj)
+//{
+//    int ret = myStackTop(obj);
+//
+//    Queue* empty = &obj->q1;
+//    Queue* nonempty = &obj->q2;
+//    if(!QueueEmpty(&obj->q1))
+//    {
+//        empty = &obj->q2;
+//        nonempty = &obj->q1;
+//    }
+//
+//    while(QueueSize(nonempty) > 1)
+//    {
+//        QueuePush(empty,QueueFront(nonempty));
+//        QueuePop(nonempty);
+//    }
+//
+//    QueuePop(nonempty);
+//
+//    return ret;
+//
+//}
+//
+//
+//bool myStackEmpty(MyStack* obj)
+//{
+//    return QueueEmpty(&obj->q1) && QueueEmpty(&obj->q2);
+//}
+//
+//void myStackFree(MyStack* obj)
+//{
+//    QueueDestroy(&obj->q1);
+//    QueueDestroy(&obj->q2);
+//
+//    free(obj);
+//    obj = NULL;
+//}
+//
+
+//力扣 232. 用栈实现队列
+//typedef int STDataType;
+//typedef struct Stack
+//{
+//    STDataType* _a;
+//    int _top;        // 栈顶
+//    int _capacity;  // 容量
+//}Stack;
+//// 初始化栈
+//void StackInit(Stack* ps);
+//// 入栈
+//void StackPush(Stack* ps, STDataType data);
+//// 出栈
+//void StackPop(Stack* ps);
+//// 获取栈顶元素
+//STDataType StackTop(Stack* ps);
+//// 获取栈中有效元素个数
+//int StackSize(Stack* ps);
+//// 检测栈是否为空，如果为空返回非零结果，如果不为空返回0
+//int StackEmpty(Stack* ps);
+//// 销毁栈
+//void StackDestroy(Stack* ps);
+//
+//// 初始化栈
+//void StackInit(Stack* ps)
+//{
+//    assert(ps);
+//    ps->_a = (STDataType*)malloc(sizeof(STDataType) * 4);
+//    if(ps->_a == NULL)
+//    {
+//        perror("malloc failed");
+//        exit(-1);
+//    }
+//    ps->_capacity = 4;
+//    ps->_top = 0;
+//}
+//
+//// 入栈
+//void StackPush(Stack* ps, STDataType data)
+//{
+//    assert(ps);
+//    if(ps->_capacity == ps->_top)
+//    {
+//        STDataType* new = (STDataType*)realloc(ps->_a, ps->_capacity*2*sizeof(STDataType));
+//        if(new == NULL)
+//        {
+//            perror("realloc failed");
+//            return;
+//        }
+//        ps->_a = new;
+//        ps->_capacity *= 2;
+//    }
+//    ps->_a[ps->_top] = data;
+//    ps->_top++;
+//}
+//
+//// 出栈
+//void StackPop(Stack* ps)
+//{
+//    assert(ps);
+//    //assert(ps->_top > 0);
+//    assert(!StackEmpty(ps));
+//    ps->_top--;
+//}
+//
+//// 获取栈顶元素
+//STDataType StackTop(Stack* ps)
+//{
+//    assert(ps);
+//    assert(!StackEmpty(ps));
+//    return ps->_a[ps->_top-1];
+//}
+//
+//// 获取栈中有效元素个数
+//int StackSize(Stack* ps)
+//{
+//    assert(ps);
+//    return ps->_top;
+//}
+//
+//// 检测栈是否为空，如果为空返回非零结果，如果不为空返回0
+//int StackEmpty(Stack* ps)
+//{
+//    assert(ps);
+//
+//    return ps->_top == 0;
+//}
+//
+//// 销毁栈
+//void StackDestroy(Stack* ps)
+//{
+//    assert(ps);
+//    free(ps->_a);
+//    ps->_a = NULL;
+//    ps->_capacity = 0;
+//    ps->_top = 0;
+//}
+//
+//
+//
+//typedef struct
+//{
+//    Stack STpush;
+//    Stack STpop;
+//} MyQueue;
+//
+//
+//MyQueue* myQueueCreate()
+//{
+//    MyQueue* obj = (MyQueue*)malloc(sizeof(MyQueue));
+//    StackInit(&obj->STpush);
+//    StackInit(&obj->STpop);
+//
+//    return obj;
+//}
+//
+//void myQueuePush(MyQueue* obj, int x)
+//{
+//    StackPush(&obj->STpush,x);
+//}
+//
+//int myQueuePeek(MyQueue* obj)
+//{
+//    if(StackEmpty(&obj->STpop))
+//    {
+//        while(!StackEmpty(&obj->STpush))
+//        {
+//            StackPush(&obj->STpop,StackTop(&obj->STpush));
+//            StackPop(&obj->STpush);
+//        }
+//    }
+//    return StackTop(&obj->STpop);
+//}
+//
+//int myQueuePop(MyQueue* obj)
+//{
+//    int ret = myQueuePeek(obj);
+//    StackPop(&obj->STpop);
+//    return ret;
+//}
+//
+//bool myQueueEmpty(MyQueue* obj)
+//{
+//    return StackEmpty(&obj->STpush) && StackEmpty(&obj->STpop);
+//}
+//
+//void myQueueFree(MyQueue* obj)
+//{
+//    StackDestroy(&obj->STpush);
+//    StackDestroy(&obj->STpop);
+//
+//    free(obj);
+//    //obj->NULL;
+//}
+
+
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
