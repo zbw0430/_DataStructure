@@ -646,6 +646,78 @@
 //}
 
 
+//力扣 622. 设计循环队列
+//typedef struct
+//{
+//    int* a;
+//    int front;
+//    int rear;
+//    int k;
+//} MyCircularQueue;
+//
+//
+//MyCircularQueue* myCircularQueueCreate(int k)
+//{
+//    MyCircularQueue* obj = (MyCircularQueue*)malloc(sizeof(MyCircularQueue));
+//    obj->a = (int*)malloc(sizeof(int) * (k+1));
+//    obj->front = 0;
+//    obj->rear = 0;
+//    obj->k = k;
+//    return obj;
+//}
+//
+//bool myCircularQueueIsEmpty(MyCircularQueue* obj)
+//{
+//    return obj->front == obj->rear;
+//}
+//
+//bool myCircularQueueIsFull(MyCircularQueue* obj)
+//{
+//    int rear = obj->rear == obj->k ? 0 : obj->rear + 1;
+//    return rear == obj->front;
+//}
+//
+//bool myCircularQueueEnQueue(MyCircularQueue* obj, int value)
+//{
+//    if(myCircularQueueIsFull(obj))
+//        return false;
+//    obj->a[obj->rear] = value;
+//    obj->rear = obj->rear == obj->k ? 0 : obj->rear + 1;
+//    return true;
+//}
+//
+//bool myCircularQueueDeQueue(MyCircularQueue* obj)
+//{
+//    if(myCircularQueueIsEmpty(obj))
+//        return false;
+//    obj->front = obj->front == obj->k ? 0 : obj->front + 1;
+//    return true;
+//}
+//
+//int myCircularQueueFront(MyCircularQueue* obj)
+//{
+//    if(myCircularQueueIsEmpty(obj))
+//        return -1;
+//    return obj->a[obj->front];
+//}
+//
+//int myCircularQueueRear(MyCircularQueue* obj)
+//{
+//    if(myCircularQueueIsEmpty(obj))
+//        return -1;
+//    int rear = obj->rear == 0 ? obj->k : obj->rear - 1;
+//    return obj->a[rear];
+//}
+//
+//void myCircularQueueFree(MyCircularQueue* obj)
+//{
+//    free(obj->a);
+//    obj->a = NULL;
+//    free(obj);
+//    obj = NULL;
+//}
+//
+
 
 int main(int argc, const char * argv[]) {
     // insert code here...
