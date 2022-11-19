@@ -65,7 +65,24 @@ void HeapInit(Heap* hp)
 }
 
 // 堆的构建
-void HeapCreate(Heap* hp, HPDataType* a, int n);
+void HeapCreate(Heap* hp, HPDataType* a, int n)
+{
+    assert(hp);
+    HPDataType* tmp = (HPDataType*)malloc(sizeof(HPDataType) * n);
+    if(tmp == NULL)
+    {
+        perror("malloc failed");
+        exit(-1);
+    }
+    hp->a = tmp;
+    hp->capacity = hp->size = n;
+    memcpy(hp->a, a, sizeof(HPDataType)*n);
+    
+    for(int i = (n-1-1)/2; i >= 0; i--)
+    {
+        AdjustDown(hp->a, hp->size, i);
+    }
+}
 
 // 堆的销毁
 void HeapDestory(Heap* hp)
@@ -112,18 +129,37 @@ void HeapPush(Heap* hp, HPDataType x)
 }
 
 // 堆的删除
-void HeapPop(Heap* hp);
+void HeapPop(Heap* hp)
+{
+    assert(hp);
+    assert(hp->size > 0);
+    
+    swap(&hp->a[0], &hp->a[hp->size-1]);
+    hp->size--;
+    
+    AdjustDown(hp->a, hp->size, 0);
+}
+
 // 取堆顶的数据
-HPDataType HeapTop(Heap* hp);
+HPDataType HeapTop(Heap* hp)
+{
+    assert(hp);
+    assert(hp->size > 0);
+    return hp->a[0];
+}
+
 // 堆的数据个数
-int HeapSize(Heap* hp);
+int HeapSize(Heap* hp)
+{
+    assert(hp);
+    return hp->size;
+}
+
 // 堆的判空
-int HeapEmpty(Heap* hp);
+int HeapEmpty(Heap* hp)
+{
+    assert(hp);
+    return hp->size == 0;
+}
  
-// TopK问题：找出N个数里面最大/最小的前K个问题。
-// 比如：未央区排名前10的泡馍，西安交通大学王者荣耀排名前10的韩信，全国排名前10的李白。等等问题都是Topk问题，
-// 需要注意：
-// 找最大的前K个，建立K个数的小堆
-// 找最小的前K个，建立K个数的大堆
-void PrintTopK(int* a, int n, int k);
-void TestTopk();
+
