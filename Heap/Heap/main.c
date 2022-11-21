@@ -48,9 +48,21 @@ void test2()
     HeapDestory(&hp);
 }
 
+void test3()
+{
+    int array[] = { 27, 15, 19, 18, 28, 34, 65, 49, 25, 37 };
+    HeapSort(array, 10);
+    for(int i = 0; i < 10; i++)
+    {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
 int main()
 {
     //test1();
-    test2();
+    //test2();
+    test3();
     return 0;
 }

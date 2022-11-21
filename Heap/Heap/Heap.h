@@ -39,6 +39,8 @@ HPDataType HeapTop(Heap* hp);
 int HeapSize(Heap* hp);
 // 堆的判空
 int HeapEmpty(Heap* hp);
+//堆排序
+void HeapSort(int* a, int n);
  
 // TopK问题：找出N个数里面最大/最小的前K个问题。
 // 比如：未央区排名前10的泡馍，西安交通大学王者荣耀排名前10的韩信，全国排名前10的李白。等等问题都是Topk问题，
