@@ -719,6 +719,60 @@
 //
 
 
+//力扣 965. 单值二叉树
+//bool isUnivalTree(struct TreeNode* root)
+//{
+//    if(root == NULL)
+//        return true;
+//    if(root->left)
+//    {
+//        if(root->val != root->left->val || !isUnivalTree(root->left))
+//            return false;
+//    }
+//    if(root->right)
+//    {
+//        if(root->val != root->right->val || !isUnivalTree(root->right))
+//            return false;
+//    }
+//    return true;
+//}
+
+
+//力扣 104. 二叉树的最大深度
+//int maxDepth(struct TreeNode* root)
+//{
+//    if(root == NULL)
+//        return 0;
+//
+//    int left = maxDepth(root->left);
+//    int right = maxDepth(root->right);
+//
+//    return left > right ? left+1 : right+1;
+//}
+
+
+//力扣 100. 相同的树
+//bool isSameTree(struct TreeNode* p, struct TreeNode* q)
+//{
+//    if(p == NULL && q == NULL)
+//    {
+//        return true;
+//    }
+//    else if(p == NULL || q == NULL)
+//    {
+//        return false;
+//    }
+//    else if(p->val != q->val)
+//    {
+//        return false;
+//    }
+//    else
+//    {
+//        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+//    }
+//
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
