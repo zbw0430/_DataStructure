@@ -78,7 +78,23 @@ int BinaryTreeLevelKSize(BTNode* root, int k)
 }
 
 // 二叉树查找值为x的节点
-BTNode* BinaryTreeFind(BTNode* root, BTDataType x);
+BTNode* BinaryTreeFind(BTNode* root, BTDataType x)
+{
+    if(root == NULL)
+        return NULL;
+    if(root->_data == x)
+        return root;
+    
+    BTNode* left = BinaryTreeFind(root->_left, x);
+    if(left)
+        return left;
+    
+    BTNode* right = BinaryTreeFind(root->_right, x);
+    if(right)
+        return right;
+    
+    return NULL;
+}
 
 // 二叉树前序遍历
 void BinaryTreePrevOrder(BTNode* root)

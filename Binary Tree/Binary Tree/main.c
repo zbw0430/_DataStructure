@@ -39,6 +39,10 @@ void test1()
     printf("%d\n", BinaryTreeLevelKSize(A, 2));
     printf("%d\n", TreeHeight(A));
     
+    BTNode* find = BinaryTreeFind(A, 'Z');
+    if(find)
+        printf("%c ", find->_data);
+    
     free(A);
     free(B);
     free(C);
