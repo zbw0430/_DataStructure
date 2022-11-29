@@ -45,6 +45,8 @@ void test1()
     
     BinaryTreeLevelOrder(A);
     
+    printf("%d\n", BinaryTreeComplete(A));
+    
     free(A);
     free(B);
     free(C);
