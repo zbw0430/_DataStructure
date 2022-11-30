@@ -773,6 +773,34 @@
 //
 //}
 
+
+//力扣 144. 二叉树的前序遍历
+//int TreeSize(struct TreeNode* root)
+//{
+//    return root == NULL ? 0 : TreeSize(root->left) + TreeSize(root->right) + 1;
+//}
+//
+//void Preorder(struct TreeNode* root, int* ret, int* i)
+//{
+//    if(root == NULL)
+//        return;
+//
+//    ret[(*i)++] = root->val;
+//    Preorder(root->left, ret, i);
+//    Preorder(root->right, ret, i);
+//}
+//
+//
+//int* preorderTraversal(struct TreeNode* root, int* returnSize)
+//{
+//    *returnSize = TreeSize(root);
+//    int* ret = (int*)malloc(sizeof(int) * (*returnSize));
+//
+//    int i = 0;
+//    Preorder(root, ret, &i);
+//    return ret;
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
