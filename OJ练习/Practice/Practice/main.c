@@ -818,6 +818,30 @@
 //    return root;
 //}
 
+
+//力扣 101. 对称二叉树
+//bool isSametree(struct TreeNode* left, struct TreeNode* right)
+//{
+//    if(left == NULL && right == NULL)
+//        return true;
+//    if(left == NULL || right == NULL)
+//        return false;
+//    if(left->val != right->val)
+//        return false;
+//
+//    return isSametree(left->left, right->right) &&
+//                isSametree(left->right, right->left);
+//
+//}
+//
+//bool isSymmetric(struct TreeNode* root)
+//{
+//    if(root == NULL)
+//        return true;
+//
+//    return isSametree(root->left, root->right);
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
