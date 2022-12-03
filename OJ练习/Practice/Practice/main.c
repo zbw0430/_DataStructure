@@ -842,6 +842,32 @@
 //    return isSametree(root->left, root->right);
 //}
 
+
+//力扣 572. 另一棵树的子树
+//bool isSametree(struct TreeNode* left, struct TreeNode* right)
+//{
+//    if(left == NULL && right == NULL)
+//        return true;
+//    if(left == NULL || right == NULL)
+//        return false;
+//    if(left->val != right->val)
+//        return false;
+//
+//    return isSametree(left->left, right->left) &&
+//                isSametree(left->right, right->right);
+//
+//}
+//
+//bool isSubtree(struct TreeNode* root, struct TreeNode* subRoot)
+//{
+//    if(root == NULL)
+//        return false;
+//    if(isSametree(root, subRoot))
+//        return true;
+//
+//    return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
