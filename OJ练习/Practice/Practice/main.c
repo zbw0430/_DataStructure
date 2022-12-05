@@ -868,6 +868,59 @@
 //    return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
 //}
 
+
+//牛客网 KY11 二叉树遍历
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//struct treeNode
+//{
+//    char val;
+//    struct treeNode* left;
+//    struct treeNode* right;
+//};
+//
+//struct treeNode* rebuildTree(char* str, int* i)
+//{
+//    if(str[*i] == '#')
+//    {
+//        (*i)++;
+//        return NULL;
+//    }
+//
+//    struct treeNode* newNode = (struct treeNode*)malloc(sizeof(struct treeNode));
+//    newNode->val = str[(*i)++];
+//
+//    newNode->left = rebuildTree(str, i);
+//    newNode->right = rebuildTree(str, i);
+//
+//    return newNode;
+//}
+//
+//void InOrder(struct treeNode* root)
+//{
+//    if(root == NULL)
+//        return;
+//
+//    InOrder(root->left);
+//    printf("%c ", root->val);
+//    InOrder(root->right);
+//}
+//
+//
+//
+//int main()
+//{
+//    char str[100];
+//    scanf("%s", str);
+//
+//    int i = 0;
+//    struct treeNode* Tree = rebuildTree(str, &i);
+//    InOrder(Tree);
+//
+//    return 0;
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
