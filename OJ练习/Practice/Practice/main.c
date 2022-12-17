@@ -921,6 +921,30 @@
 //    return 0;
 //}
 
+
+//力扣 110. 平衡二叉树
+//int Height(struct TreeNode* root)
+//{
+//    if(root == NULL)
+//        return 0;
+//
+//    int lh = Height(root->left);
+//    int rh = Height(root->right);
+//
+//    return lh > rh ? (lh+1) : (rh+1);
+//}
+//
+//bool isBalanced(struct TreeNode* root)
+//{
+//    if(root == NULL)
+//        return true;
+//
+//    if(abs( Height(root->left) - Height(root->right)) > 1)
+//        return false;
+//
+//    return isBalanced(root->left) && isBalanced(root->right);
+//}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
