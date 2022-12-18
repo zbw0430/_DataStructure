@@ -16,6 +16,7 @@ void InsertSort(int* a, int n);
 void ShellSort(int* a, int n);
 void Shell_Sort(int* a, int n);
 
-
+//选择排序
+void SelectSort(int* a, int n);
 
 #endif /* Sort_h */

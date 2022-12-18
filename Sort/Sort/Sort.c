@@ -93,3 +93,47 @@ void Shell_Sort(int* a, int n)
         }
     }
 }
+
+
+//选择排序
+void swap(int* a, int* b)
+{
+    int tmp = 0;
+    tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+void SelectSort(int* a, int n)
+{
+    int begin = 0;
+    int end = n-1;
+    
+    while(begin < end)
+    {
+        int mini = begin;
+        int maxi = begin;
+        
+        for(int i = begin; i <= end; i++)
+        {
+            if(a[i] < a[mini])
+            {
+                mini = i;
+            }
+            if(a[i] > a[maxi])
+            {
+                maxi = i;
+            }
+        }
+        
+        swap(&a[begin], &a[mini]);
+        if(maxi == begin)
+        {
+            maxi = mini;
+        }
+        swap(&a[end], &a[maxi]);
+        
+        begin++;
+        end--;
+    }
+}

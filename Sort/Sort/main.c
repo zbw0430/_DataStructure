@@ -26,10 +26,21 @@ void test_ShellSort()
     printf("\n");
 }
 
+void test_SelectSort()
+{
+    int a[] = {9,2,8,1,5,7,3,4,6};
+    //ShellSort(a, 9);
+    SelectSort(a, 9);
+    for(int i = 0; i < 9; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
 
 int main()
 {
     test_InsertSort();
     test_ShellSort();
+    test_SelectSort();
     return 0;
 }
