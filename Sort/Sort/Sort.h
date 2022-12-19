@@ -19,4 +19,6 @@ void Shell_Sort(int* a, int n);
 //选择排序
 void SelectSort(int* a, int n);
 
+//冒泡排序
+void BubbleSort(int* a, int n);
 #endif /* Sort_h */
