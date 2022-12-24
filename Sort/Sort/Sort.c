@@ -160,3 +160,36 @@ void BubbleSort(int* a, int n)
         }
     }
 }
+
+
+//快速排序
+void QuickSort(int* a, int begin, int end)
+{
+    if(begin >= end)
+    {
+        return;
+    }
+    
+    int left = begin;
+    int right = end;
+    int key = left;
+    
+    while(left < right)
+    {
+        while(left < right && a[right] > a[key])
+        {
+            right--;
+        }
+        while(left < right && a[left] < a[key])
+        {
+            left++;
+        }
+        
+        swap(&a[left], &a[right]);
+    }
+    
+    swap(&a[left], &a[key]);
+    
+    QuickSort(a, begin, key-1);
+    QuickSort(a, key+1, end);
+}

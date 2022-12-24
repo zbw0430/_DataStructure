@@ -45,6 +45,15 @@ void test_BubbleSort()
     printf("\n");
 }
 
+void test_QuickSort()
+{
+    int a[] = {9,2,8,1,5,7,3,4,6};
+    QuickSort(a, 0, 8);
+    for(int i = 0; i < 9; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
 
 int main()
 {
@@ -52,5 +61,6 @@ int main()
     test_ShellSort();
     test_SelectSort();
     test_BubbleSort();
+    test_QuickSort();
     return 0;
 }
