@@ -23,4 +23,7 @@ void SelectSort(int* a, int n);
 void BubbleSort(int* a, int n);
 //快速排序
 void QuickSort(int* a, int begin, int end);
+//快排两步优化
+void QuickSort_2(int* a, int begin, int end);
+
 #endif /* Sort_h */

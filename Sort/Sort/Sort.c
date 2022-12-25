@@ -193,3 +193,87 @@ void QuickSort(int* a, int begin, int end)
     QuickSort(a, begin, key-1);
     QuickSort(a, key+1, end);
 }
+
+
+//快排两步优化
+// 三数取中
+// begin  mid  end
+int GetMidIndex(int* a, int begin, int end)
+{
+    int mid = (begin + end) / 2;
+    if (a[begin] < a[mid])
+    {
+        if (a[mid] < a[end])
+        {
+            return mid;
+        }
+        else if (a[begin] > a[end])
+        {
+            return begin;
+        }
+        else
+        {
+            return end;
+        }
+    }
+    else // a[begin] > a[mid]
+    {
+        if (a[mid] > a[end])
+        {
+            return mid;
+        }
+        else if (a[begin] < a[end])
+        {
+            return begin;
+        }
+        else
+        {
+            return end;
+        }
+    }
+}
+
+void QuickSort_2(int* a, int begin, int end)
+{
+    if (begin >= end)
+    {
+        return;
+    }
+    
+    if ((end - begin + 1) < 15)
+    {
+        // 小区间用直接插入替代，减少递归调用次数
+        InsertSort(a+begin, end - begin + 1);
+    }
+    else
+    {
+        int mid = GetMidIndex(a, begin, end);
+        swap(&a[begin], &a[mid]);
+    
+        int left = begin, right = end;
+        int keyi = left;
+        while (left < right)
+        {
+            // 右边先走，找小
+            while (left < right && a[right] >= a[keyi])
+            {
+                --right;
+            }
+    
+            // 左边再走，找大
+            while (left < right && a[left] <= a[keyi])
+            {
+                ++left;
+            }
+    
+            swap(&a[left], &a[right]);
+        }
+    
+        swap(&a[left], &a[keyi]);
+        keyi = left;
+    
+        // [begin, keyi-1]  keyi [keyi+1, end]
+        QuickSort(a, begin, keyi - 1);
+        QuickSort(a, keyi + 1, end);
+    }
+}
