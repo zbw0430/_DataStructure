@@ -277,3 +277,117 @@ void QuickSort_2(int* a, int begin, int end)
         QuickSort(a, keyi + 1, end);
     }
 }
+
+
+//快排三种方法
+
+//Hoare
+int PartSort1(int* a, int begin, int end)
+{
+    int mid = GetMidIndex(a, begin, end);
+    swap(&a[begin], &a[mid]);
+
+    int left = begin, right = end;
+    int keyi = left;
+    while (left < right)
+    {
+        // 右边先走，找小
+        while (left < right && a[right] >= a[keyi])
+        {
+            --right;
+        }
+
+        // 左边再走，找大
+        while (left < right && a[left] <= a[keyi])
+        {
+            ++left;
+        }
+
+        swap(&a[left], &a[right]);
+    }
+
+    swap(&a[left], &a[keyi]);
+    keyi = left;
+    
+    return keyi;
+}
+
+//挖坑法
+int PartSort2(int* a, int begin, int end)
+{
+    int mid = GetMidIndex(a, begin, end);
+    swap(&a[begin], &a[mid]);
+
+    int left = begin, right = end;
+    int key = a[left];
+    int hole = left;
+    while (left < right)
+    {
+        // 右边找小，填到左边坑里面
+        while (left < right && a[right] >= key)
+        {
+            --right;
+        }
+
+        a[hole] = a[right];
+        hole = right;
+
+        // 左边找大，填到右边坑里面
+        while (left < right && a[left] <= key)
+        {
+            ++left;
+        }
+
+        a[hole] = a[left];
+        hole = left;
+    }
+
+    a[hole] = key;
+    return hole;
+}
+
+//双指针
+int PartSort3(int* a, int begin, int end)
+{
+    int mid = GetMidIndex(a, begin, end);
+    swap(&a[begin], &a[mid]);
+
+    int keyi = begin;
+    int prev = begin, cur = begin + 1;
+    while (cur <= end)
+    {
+        // 找到比key小的值时，跟++prev位置交换，小的往前翻，大的往后翻
+        if (a[cur] < a[keyi] && ++prev != cur)
+            swap(&a[prev], &a[cur]);
+
+        ++cur;
+    }
+
+    swap(&a[prev], &a[keyi]);
+    keyi = prev;
+    return keyi;
+}
+
+void QuickSort_3(int* a, int begin, int end)
+{
+    if (begin >= end)
+    {
+        return;
+    }
+    
+    if ((end - begin + 1) < 15)
+    {
+        // 小区间用直接插入替代，减少递归调用次数
+        InsertSort(a+begin, end - begin + 1);
+    }
+    else
+    {
+        //int keyi = PartSort1(a, begin, end);
+        //int keyi = PartSort2(a, begin, end);
+        int keyi = PartSort3(a, begin, end);
+        
+        // [begin, keyi-1]  keyi [keyi+1, end]
+        QuickSort(a, begin, keyi - 1);
+        QuickSort(a, keyi + 1, end);
+    }
+}

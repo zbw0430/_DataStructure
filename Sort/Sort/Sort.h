@@ -25,5 +25,7 @@ void BubbleSort(int* a, int n);
 void QuickSort(int* a, int begin, int end);
 //快排两步优化
 void QuickSort_2(int* a, int begin, int end);
+//快排三种方法
+void QuickSort_3(int* a, int begin, int end);
 
 #endif /* Sort_h */
