@@ -27,5 +27,7 @@ void QuickSort(int* a, int begin, int end);
 void QuickSort_2(int* a, int begin, int end);
 //快排三种方法
 void QuickSort_3(int* a, int begin, int end);
+//快排非递归
+void QuickSortNonR(int* a, int begin, int end);
 
 #endif /* Sort_h */

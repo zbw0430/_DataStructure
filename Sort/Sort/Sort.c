@@ -391,3 +391,37 @@ void QuickSort_3(int* a, int begin, int end)
         QuickSort(a, keyi + 1, end);
     }
 }
+
+
+//快排非递归(栈辅助)
+//void QuickSortNonR(int* a, int begin, int end)
+//{
+//    ST st;
+//    StackInit(&st);
+//    StackPush(&st, begin);
+//    StackPush(&st, end);
+//
+//    while (!StackEmpty(&st))
+//    {
+//        int right = StackTop(&st);
+//        StackPop(&st);
+//        int left = StackTop(&st);
+//        StackPop(&st);
+//
+//        int keyi = PartSort3(a, left, right);
+//        // [left, keyi-1] keyi [keyi+1, right]
+//        if (keyi+1 < right)
+//        {
+//            StackPush(&st, keyi + 1);
+//            StackPush(&st, right);
+//        }
+//
+//        if (left < keyi-1)
+//        {
+//            StackPush(&st, left);
+//            StackPush(&st, keyi - 1);
+//        }
+//    }
+//
+//    StackDestroy(&st);
+//}
