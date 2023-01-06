@@ -9,6 +9,8 @@
 #define Sort_h
 
 #include <stdio.h>
+#include "stdlib.h"
+#include "string.h"
 
 //插入排序
 void InsertSort(int* a, int n);
@@ -29,5 +31,8 @@ void QuickSort_2(int* a, int begin, int end);
 void QuickSort_3(int* a, int begin, int end);
 //快排非递归
 void QuickSortNonR(int* a, int begin, int end);
+
+//归并排序
+void MergeSort(int* a, int n);
 
 #endif /* Sort_h */

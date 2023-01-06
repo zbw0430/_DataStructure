@@ -63,6 +63,16 @@ void test_QuickSort_2()
     printf("\n");
 }
 
+void test_MergeSort()
+{
+    int a[] = {9,2,8,1,5,7,3,4,6};
+    MergeSort(a, 9);
+    for(int i = 0; i < 9; i++)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+
+
 
 int main()
 {
@@ -72,5 +82,6 @@ int main()
     test_BubbleSort();
     test_QuickSort();
     test_QuickSort_2();
+    test_MergeSort();
     return 0;
 }
