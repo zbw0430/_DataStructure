@@ -484,3 +484,73 @@ void MergeSort(int* a, int n)
     free(tmp);
     tmp = NULL;
 }
+
+
+//归并排序非递归
+void MergeSortNonR(int* a, int n)
+{
+    int* tmp = (int*)malloc(sizeof(int)*n);
+    if (tmp == NULL)
+    {
+        perror("malloc fail");
+        exit(-1);
+    }
+
+    // 归并每组数据个数，从1开始，因为1个认为是有序的，可以直接归并
+    int rangeN = 1;
+    while (rangeN < n)
+    {
+        for (int i = 0; i < n; i += 2 * rangeN)
+        {
+            // [begin1,end1][begin2,end2] 归并
+            int begin1 = i, end1 = i + rangeN - 1;
+            int begin2 = i + rangeN, end2 = i + 2 * rangeN - 1;
+            //printf("[%d,%d][%d,%d]\n", begin1, end1, begin2, end2);
+            int j = i;
+
+            // end1 begin2 end2 越界
+            if (end1 >= n)
+            {
+                break;
+            }
+            else if (begin2 >= n)
+            {
+                break;
+            }
+            else if (end2 >= n)
+            {
+                end2 = n - 1;
+            }
+
+            while (begin1 <= end1 && begin2 <= end2)
+            {
+                if (a[begin1] <= a[begin2])
+                {
+                    tmp[j++] = a[begin1++];
+                }
+                else
+                {
+                    tmp[j++] = a[begin2++];
+                }
+            }
+
+            while (begin1 <= end1)
+            {
+                tmp[j++] = a[begin1++];
+            }
+
+            while (begin2 <= end2)
+            {
+                tmp[j++] = a[begin2++];
+            }
+
+            // 归并一部分，拷贝一部分
+            memcpy(a + i, tmp + i, sizeof(int)*(end2 - i + 1));
+        }
+
+        rangeN *= 2;
+    }
+
+    free(tmp);
+    tmp = NULL;
+}

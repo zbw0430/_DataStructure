@@ -34,5 +34,7 @@ void QuickSortNonR(int* a, int begin, int end);
 
 //归并排序
 void MergeSort(int* a, int n);
+//归并排序非递归
+void MergeSortNonR(int* a, int n);
 
 #endif /* Sort_h */
